@@ -1,0 +1,288 @@
+@import './mixins.scss';
+
+.second-space-section{
+  background-image: url(../img/space-06/space-06.jpg);
+  position: relative;
+
+  &::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(rgb(38, 3, 100), .3);
+    z-index: -2;
+  }
+
+  &::before{
+    content: '';
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    height: calc(var(--index) * 10);
+    top: calc(var(--index) * -6);
+    left: 0;
+    background-image: url(../img/planets/planet-15.png), 
+                      url(../img/planets/planet-16.png), 
+                      url(../img/planets/planet-16.png), 
+                      url(../img/planets/planet-15.png), 
+                      url(../img/planets/planet-15.png), 
+                      url(../img/planets/planet-15.png), 
+                      url(../img/planets/planet-16.png), 
+                      url(../img/planets/planet-16.png), 
+                      url(../img/planets/planet-15.png), 
+                      url(../img/planets/planet-15.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: -8% 0, 15% 0, 50% 0, 30% 0, 70% 0, 70% 0, 90% 0, 90% 0, 110% 0;
+    filter: sepia() saturate(7999%) hue-rotate(260deg) brightness(.9) drop-shadow(0 10px 10px #6a233c);
+  }
+
+  &__kit{
+    position: absolute;
+    top: -20%;
+    left: -70%;
+    background-image: url('../img/space-03/kit.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: drop-shadow(0 0 20px #888853);
+    z-index: 1;
+
+    transform: translate3d(calc(var(--scrollTop) / 1.5), calc(var(--scrollTop) / 7), 0) rotate(5deg);
+    transition: var(--transition);
+    will-change: transform;
+  }
+
+  &__stone-01{
+    position: absolute;
+    left: -20%;
+    bottom: -20%;
+    background-image: url('../img/space-03/space-03-long-stone.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: drop-shadow(0 0 30px #eab524);
+    transform: translate3d(calc(var(--scrollTop) / 15), calc(var(--scrollTop) / -25), 0);
+    transition: var(--transition);
+    will-change: transform;
+  }
+
+  &__stone-02{
+    right: 20%;
+    bottom: 5%;
+    background-image: url('../img/space-03/space-03-right-stone.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: drop-shadow(0 0 30px #eab524);
+    transform: translate3d(calc(var(--scrollTop) / 10), calc(var(--scrollTop) / -12), 0) scale(1.4);
+    transition: var(--transition);
+    will-change: transform;
+  }
+
+  &__stone-03{
+    background-image: url('../img/space-03/space-03-fly-stone-01.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: drop-shadow(0 0 30px #eab524);
+    animation: move-blue-stone-01 3s 1s linear infinite alternate-reverse;
+
+    top: -10%;
+    left: 10%;
+    z-index: 2;
+
+    transform: translate3d(calc(var(--scrollTop) / 15), calc(var(--scrollTop) / 15), 0);
+    transition: var(--transition);
+    will-change: transform;
+  }
+
+  &__stone-04{
+    background-image: url('../img/space-03/space-03-fly-stone.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+    animation: move-blue-stone 3s linear infinite alternate-reverse;
+    filter: drop-shadow(0 0 30px #eab524);
+
+    top: -50%;
+    right: -20%;
+  }
+
+  &__stone-05{
+    background-image: url('../img/space-03/space-03-upper-stone.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: drop-shadow(0 0 30px #eab524);
+
+    top: 0;
+    right: -30%;
+
+    transform: translate3d(calc(var(--scrollTop) / -5), 0, 0);
+    transition: var(--transition);
+    will-change: transform;
+  }
+
+  &__stone-06{
+    background-image: url('../img/space-03/space-03-fly-stone.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: drop-shadow(0 0 30px #eab524);
+    bottom: -45%;
+    right: 20%;
+
+    transform: translate3d(calc(var(--scrollTop) / 25), calc(var(--scrollTop) / -40), 0);
+    transition: var(--transition);
+    will-change: transform;
+    animation: move-blue-stone-02 3s 2s linear infinite alternate-reverse;
+  }
+
+  @keyframes move-blue-stone {
+    0%, 100%{
+      transform: translate3d(calc(var(--scrollTop) / -10), calc(var(--scrollTop) / 5), 0) scale(1);
+      filter: drop-shadow(0 0 15px #d8c301);
+    }     
+    50%{
+      transform: translate3d(calc(var(--scrollTop) / -10), calc(var(--scrollTop) / 5), 0) scale(.97);
+      filter:drop-shadow(15px calc(0.2*10px) 10px #090143);
+    }
+  }
+
+  @keyframes move-blue-stone-01 {
+    0%, 100%{
+      transform: translate3d(calc(var(--scrollTop) / 15), calc(var(--scrollTop) / 10), 0) scale(1);
+      filter: drop-shadow(0 0 15px #d8c301);
+    }     
+    50%{
+      transform: translate3d(calc(var(--scrollTop) / 15), calc(var(--scrollTop) / 10), 0) scale(.97);
+      filter:drop-shadow(15px calc(0.2*10px) 10px #090143);
+    }
+  }
+
+  @keyframes move-blue-stone-02 {
+    0%, 100%{
+      transform:  translate3d(calc(var(--scrollTop) / 25), calc(var(--scrollTop) / -40), 0) scale(1);
+      filter: drop-shadow(0 0 15px #d8c301);
+    }     
+    50%{
+      transform:  translate3d(calc(var(--scrollTop) / 25), calc(var(--scrollTop) / -40), 0) scale(.97);
+      filter:drop-shadow(15px calc(0.2*10px) 10px #090143);
+    }
+  }
+
+  &__info{
+    height: 100vh;
+    padding: 90px 40px 40px 40px ;
+    display: grid;
+    grid-template-columns: minmax(100px, 350px) 1fr 1fr;
+    grid-template-rows: auto repeat(7, 1fr);
+    @include px-to-em(column-gap, 40, 16);
+    
+    position: relative;
+  }
+
+  &__tilte-description{
+    grid-column-start: 1;
+    grid-row-start: 2;
+
+    z-index: 10;
+    letter-spacing: .06em;
+    color: white;
+    text-shadow: 0 0 15px #01b1d8;
+    @include px-to-em(font-size, 25, 16);
+    font-size: calc(var(--index) * 1.2);
+
+  }
+
+  &__text{
+    @include px-to-em(font-size, 25, 16);
+    font-size: calc(var(--index));
+    text-shadow: 0 0 10px #ff3700;
+    letter-spacing: .06em;
+    
+    &:first-letter{
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color:#f4f74c;
+      font-weight: 500;
+      @include px-to-em(font-size, 25, 16);
+    }
+
+    &_01{
+      position: absolute;
+      top: 5%;
+      left: -50%;
+      grid-row-start: 5;
+      grid-column-start: 1;
+      grid-column-end: 2;   
+
+      max-width: 350px;
+
+      transform: translate3d(calc(var(--scrollTop) / 8), 0, 0);
+      transition: var(--transition);
+      will-change: transform;
+    }
+
+    &_02{
+      grid-row-start: 6;
+      grid-column-start: 1;
+      grid-column-end: 2; 
+
+      transform: translate3d(calc(var(--scrollTop) / 3.5), 0, 0);
+      transition: var(--transition);
+      will-change: transform;
+    }
+
+    &_03{
+      grid-row-start: 7;
+      grid-column-start: 1;
+
+      grid-column-end: 2; 
+
+      transform: translate3d(calc(var(--scrollTop) / 1.8), 0, 0);
+      transition: var(--transition);
+      will-change: transform;
+    }
+  }
+
+  &__star{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    background: rgb(252, 225, 225);
+    border-radius: 50%;
+    filter: drop-shadow(0 0 5px white)
+            drop-shadow(0 0 10px rgb(255, 62, 62));
+    z-index: -1;
+    // animation: stars 3s linear infinite;
+
+    &::before{
+      content: '';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 300px;
+      height: 1px;
+      background: linear-gradient(90deg,#fff,transparent);
+    }
+
+    &:nth-child(4){
+      top: 10%;
+      right: 20%;
+      animation: stars-left 2s 2s linear infinite;  
+    }
+
+    &:nth-child(2){
+      top: 20%;
+      left: -10%;
+      animation: stars-left 3.5s 1.5s linear infinite;  
+    }
+    
+    &:nth-child(3){
+      top: 0;
+      left: 40%;
+      animation: stars-left 3s linear infinite; 
+    }
+  }
+}

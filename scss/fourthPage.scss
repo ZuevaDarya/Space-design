@@ -1,0 +1,351 @@
+@import './mixins.scss';
+
+@mixin fly-light($name, $left, $width, $height, $duration, $delay, $background: rgb(51, 211, 255)){
+  &_#{$name}{
+    position: absolute;
+    left: $left;
+    width: #{$width}px;
+    height: #{$height}px;
+    animation: fly #{$duration}s #{$delay}s linear infinite;
+    background: $background;
+    z-index: 6;
+  }
+}
+
+.third-space-section{
+  background-image: url(../img/background-05.jpg);
+  background-size: cover;
+  position: relative;
+  &::before{
+    content: '';
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    height: calc(var(--index) * 10);
+    top: calc(var(--index) * -6);
+    left: 0;
+    background-image: url(../img/planets/planet-15.png), 
+                      url(../img/planets/planet-16.png), 
+                      url(../img/planets/planet-16.png), 
+                      url(../img/planets/planet-15.png), 
+                      url(../img/planets/planet-15.png), 
+                      url(../img/planets/planet-15.png), 
+                      url(../img/planets/planet-16.png), 
+                      url(../img/planets/planet-16.png), 
+                      url(../img/planets/planet-15.png), 
+                      url(../img/planets/planet-15.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: -8% 0, 15% 0, 50% 0, 30% 0, 70% 0, 70% 0, 90% 0, 90% 0, 110% 0;
+    filter: sepia() saturate(5999%) hue-rotate(240deg) drop-shadow(0 10px 10px #232c6a);
+  }
+
+  &::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(rgb(98, 67, 150), .2);
+    z-index: -2;
+  }
+
+  &__info{
+    height: 100vh;
+    padding: 90px 40px 40px 40px ;
+    display: grid;
+    grid-template-columns: minmax(100px, 450px) 2fr 1fr;
+    grid-template-rows: auto repeat(7, 1fr);
+    @include px-to-em(column-gap, 40, 16);
+    
+    position: relative;
+  }
+
+  &__fly-light{
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    width: 7px;
+    height: 7px;
+    background: rgb(142, 231, 255);
+    border-radius: 50%;
+    filter: drop-shadow(0 0 10px white)
+            drop-shadow(0 0 20px rgb(255, 62, 62));
+    z-index: 6;
+    opacity: 0;
+
+    @include fly-light('1', 20%, 10, 10, 4, 0, #fff);
+    @include fly-light('2', 10%, 7, 7, 7, 0);
+    @include fly-light('3', 5%, 12, 12, 5, 2, #fff);
+    @include fly-light('12', 5%, 10, 10, 8, 4);
+    @include fly-light('4', 7%, 5, 5, 5, 1);
+    @include fly-light('5', 22%, 5, 5, 7, 5, #fff);
+    @include fly-light('13', 25%, 7, 7, 5, 7);
+    @include fly-light('6', 30%, 7, 7, 7, 3);
+    @include fly-light('11', 30%, 7, 7, 7, 5, #fff);
+    @include fly-light('7', 31%, 15, 15, 8, 1);
+    @include fly-light('8', 35%, 7, 7, 4, 1);
+    @include fly-light('9', 40%, 7, 7, 7, 2, #fff);
+    @include fly-light('10', 45%, 10, 10, 4, 0);
+    @include fly-light('14', 50%, 5, 5, 7, .5, #fff);
+    @include fly-light('15', 35%, 7, 7, 8, 0);
+    @include fly-light('16', 47%, 12, 12, 5, 2, #fff);
+    @include fly-light('17', 50%, 10, 10, 6, 4);
+    @include fly-light('18', 45%, 5, 5, 5, 5);
+    @include fly-light('19', 55%, 7, 7, 7, 0, #fff);
+    @include fly-light('20', 57%, 7, 7, 10, 2, #fff);
+    @include fly-light('21', 58%, 10, 10, 4, 0);
+    @include fly-light('22', 63%, 7, 7, 7, 0);
+    @include fly-light('23', 65%, 12, 12, 5, 2, #fff);
+    @include fly-light('24', 70%, 10, 10, 8, 0, #fff);
+    @include fly-light('25', 75%, 5, 5, 5, 0);
+    @include fly-light('26', 78%, 5, 5, 7, 5, #fff);
+    @include fly-light('27', 83%, 7, 7, 7, 2, #fff);
+    @include fly-light('28', 85%, 10, 10, 4, 0);
+    @include fly-light('29', 88%, 5, 5, 7, .5);
+    @include fly-light('30', 90%, 7, 7, 8, 0);
+    @include fly-light('31', 97%, 12, 12, 5, 2, #fff);
+    @include fly-light('32', 91%, 10, 10, 6, 4);
+    @include fly-light('33', 92%, 5, 5, 5, 5,#fff);
+    @include fly-light('34', 40%, 7, 7, 10, 7);
+    @include fly-light('35', 45%, 10, 10, 4, 0);
+    @include fly-light('36', 52%, 5, 5, 7, 5, #fff);
+    @include fly-light('37', 35%, 7, 7, 8, 0);
+    @include fly-light('38', 47%, 12, 12, 5, 2,#fff);
+    @include fly-light('39', 72%, 10, 10, 6, 4);
+    @include fly-light('40', 45%, 5, 5, 10, 5,#fff);
+
+    @keyframes fly {
+      0%{
+        opacity: 0;
+        transform: translateY(0vh);
+      }
+      20%{
+        opacity: .7;
+        transform: translateY(-20vh);
+      } 
+      40%{
+        opacity: 1;
+        transform: translateY(-40vh);
+      }
+      60%{
+        opacity: .7;
+        transform: translateY(-60vh);
+      }
+      80%{
+        opacity: .5;
+        transform: translateY(-80vh);
+      }
+      100%{
+        opacity: 0;
+        transform: translateY(-100vh);
+      }
+    }
+  }
+
+  &__tilte-description{
+    grid-column-start: 1;
+    grid-row-start: 2;
+
+    z-index: 10;
+    letter-spacing: .06em;
+    color: #ff3700;
+    text-shadow: 0 0 15px #f78fe7;
+    @include px-to-em(font-size, 25, 16);
+    font-size: calc(var(--index) * 1.2);
+  }
+
+  &__text{
+    @include px-to-em(font-size, 25, 16);
+    font-size: calc(var(--index));
+    text-shadow: 0 0 10px #ff3700;
+    letter-spacing: .06em;
+    z-index: -1;
+
+    &:first-letter{
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color:#d83c04;
+      font-weight: 500;
+      @include px-to-em(font-size, 25, 16)
+    }
+    
+    &_01{
+      grid-row-start: 2;
+      grid-column-start: 1;
+      grid-column-end: 2;  
+      transform: translate3d(calc(var(--scrollTop) / 4.5), 0, 0);
+    }
+
+    &_02{
+      position: absolute;
+      right: -8%;
+      top: 5%; 
+      grid-row-start: 3;
+      grid-column-start: 2;
+      transform: translate3d(calc(var(--scrollTop) / -4.5), 0, 0);
+      max-width: 450px;
+    }
+
+    &_03{
+      grid-row-start: 5;
+      grid-column-start: 1;
+      grid-column-end: 2;  
+      transform: translate3d(calc(var(--scrollTop) / 4.5), 0, 0);
+    }
+  }
+  
+  &__stone-01{
+    left: -50%;
+    bottom: -15%;
+    background-image:  url(../img/space-02/space-02-left-ground.png);
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: translate3d(calc(var(--scrollTop) / 3.3), calc(var(--scrollTop) / -80), 0);
+    
+    z-index: -1;
+  }
+
+  &__stone-02{
+    right: -70%;
+    bottom: -11%;
+    background-image:  url(../img/space-02/space-02-right-ground.png);
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: translate3d(calc(var(--scrollTop) / -2.4), calc(var(--scrollTop) / -80), 0);
+    
+  }
+
+  &__stone-03{
+    left: 50%;
+    bottom: -20%;
+    background-image:  url(../img/space-02/space-02-left-stone.png);
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: translate3d(calc(var(--scrollTop) / -3.5), calc(var(--scrollTop) / -75), 0);
+    // filter: drop-shadow(0 0 10px #00c8ff);
+    z-index: 5;
+  }
+
+  &__stone-04{
+    right: 47%;
+    bottom: -16%;
+    background-image:  url(../img/space-02/space-02-right-stone.png);
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: translate3d(calc(var(--scrollTop) / 3.5), calc(var(--scrollTop) / -75), 0);
+    // filter: drop-shadow(0 0 10px #00c8ff);
+  }
+
+  &__stone-05{
+    left: 50%;
+    bottom: -20%;
+    background-image:  url(../img/space-02/space-02-left-lower-stone.png);
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: translate3d(calc(var(--scrollTop) / -3.5), calc(var(--scrollTop) / -75), 0);
+    animation: rotate-stone 3s linear infinite alternate-reverse;
+    z-index: -1;
+    filter: drop-shadow(0 0 10px #00c8ff);
+  }
+
+  &__stone-06{
+    right: 47%;
+    bottom: -15%;
+    background-image:  url(../img/space-02/space-02-right-lower-stone.png);
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: translate3d(calc(var(--scrollTop) / 3.5), calc(var(--scrollTop) / -75), 0);
+    filter: drop-shadow(0 0 10px #00c8ff);
+    animation: rotate-stone-01 3s 1s linear infinite alternate-reverse;
+  }
+
+  &__stone-07{
+    left: -20%;
+    top: -30%;
+    background-image:  url(../img/space-02/space-02-left-upper-stone.png);
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: translate3d(calc(var(--scrollTop) / 8), calc(var(--scrollTop) / 8), 0);
+    animation: rotate-stone-02 3s linear infinite alternate-reverse;
+    filter: drop-shadow(0 0 10px #00c8ff);
+  }
+
+  &__stone-08{
+    right: -20%;
+    top: -30%;
+    background-image:  url(../img/space-02/space-02-right-upper-stone.png);
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: translate3d(calc(var(--scrollTop) / -8), calc(var(--scrollTop) / 8), 0);
+    filter: drop-shadow(0 0 10px #00c8ff);
+    animation: rotate-stone-03 3s linear infinite alternate-reverse;
+  }
+
+  @keyframes rotate-stone {
+    0%{
+      transform: translate3d(calc(var(--scrollTop) / -3.5), calc(var(--scrollTop) / -75), 0) rotateX(0);
+    }
+    50%{
+      transform: translate3d(calc(var(--scrollTop) / -3.5), calc(var(--scrollTop) / -75), 0) rotate(-2deg);
+    }
+    100%{
+      transform: translate3d(calc(var(--scrollTop) / -3.5), calc(var(--scrollTop) / -75), 0) rotateX(0);
+    }
+  }
+
+  @keyframes rotate-stone-01 {
+    0%{
+      transform: translate3d(calc(var(--scrollTop) / 3.5), calc(var(--scrollTop) / -75), 0) rotateX(0);
+    }
+    50%{
+      transform: translate3d(calc(var(--scrollTop) / 3.5), calc(var(--scrollTop) / -75), 0) rotate(2deg);
+    }
+    100%{
+      transform: translate3d(calc(var(--scrollTop) / 3.5), calc(var(--scrollTop) / -75), 0) rotateX(0);
+    }
+  }
+
+  @keyframes rotate-stone-02 {
+    0%{
+      transform: translate3d(calc(var(--scrollTop) / 8), calc(var(--scrollTop) / 8), 0) rotateX(0);
+    }
+    50%{
+      transform: translate3d(calc(var(--scrollTop) / 8), calc(var(--scrollTop) / 8), 0) rotate(2deg);
+    }
+    100%{
+      transform: translate3d(calc(var(--scrollTop) / 8), calc(var(--scrollTop) / 8), 0) rotateX(0);
+    }
+  }
+
+  @keyframes rotate-stone-03 {
+    0%{
+      transform: translate3d(calc(var(--scrollTop) / -8), calc(var(--scrollTop) / 8), 0) rotateX(0);
+    }
+    50%{
+      transform: translate3d(calc(var(--scrollTop) / -8), calc(var(--scrollTop) / 8), 0) rotate(2deg);
+    }
+    100%{
+      transform: translate3d(calc(var(--scrollTop) / -8), calc(var(--scrollTop) / 8), 0) rotateX(0);
+    }
+  }
+}
+
